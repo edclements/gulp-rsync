@@ -29,7 +29,7 @@ module.exports = function(options) {
 
   var cwd = options.root ? path.resolve(options.root) : process.cwd();
 
-  return through.obj(function(file, enc, cb) {
+  return through({objectMode: true}, function(file, enc, cb) {
     if (file.isStream()) {
       this.emit(
         'error',
